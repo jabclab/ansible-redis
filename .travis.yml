@@ -24,6 +24,7 @@ script:
     || (echo 'Idempotency: FAIL' && exit 1)
   - >
     ansible-playbook -i localhost, tests/test_sentinel.yml --connection=local --sudo
+    | grep -e changed -e failed
     && (echo 'Idempotency: PASS' && exit 0)
     || (echo 'Idempotency: FAIL' && exit 0)
   - >
