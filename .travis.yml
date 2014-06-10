@@ -35,5 +35,6 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotency: PASS' && exit 0)
     || (echo 'Idempotency: FAIL' && exit 1)
+  - "jake=`/opt/redis/bin/redis-cli -p 26379 PING`; echo $jake"
   - "/opt/redis/bin/redis-cli PING"
   - "/opt/redis/bin/redis-cli -p 26379 PING"
