@@ -45,7 +45,7 @@
 
 - name: ensure base config is present in sentinel config file
   lineinfile: dest=/etc/redis/sentinel_{{ redis_sentinel_port }}.conf
-              line="{{ item }}"
+              line="{{ item|replace('"', '\"') }}"
               regexp="^{{ item }}$"
   with_items: lookup('template', '../templates/redis_sentinel.dyn.conf.j2').split('\n')
   notify: restart redis
