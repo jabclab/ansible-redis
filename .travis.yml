@@ -36,6 +36,7 @@ script:
     && (echo 'Idempotency: PASS' && exit 0)
     || (echo 'Idempotency: FAIL' && exit 1)
   - "jake=`ps aux | grep [r]edis`; echo $jake"
+  - "sudo cat /etc/redis/sentinel_26379.conf"
   - "sudo cat /var/log/redis_sentinel_26379.log"
   - "cat /var/log/redis_sentinel_26379.log"
   - "sudo service sentinel_26379 start"
